@@ -14,8 +14,9 @@ app.use(express.json());
 app.use(cors({origin: 'http://localhost:4200'}));
 
 //Routes
-app.use('/api/products',require('./routes/Product.route'))
-app.use('/api/categories',require('./routes/Category.route'))
+app.use('/api/products',require('./routes/Product.route'));
+app.use('/api/categories',require('./routes/Category.route'));
+app.use('/api/users',require('./routes/User.route'))
 
 //Starting Server
 app.listen(app.get('port'), ()=>{
