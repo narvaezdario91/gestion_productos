@@ -4,7 +4,15 @@ const Category = require('../models/Category');
 const productCtrl ={};
 
 productCtrl.getList = async (req, res) => {
-    const productInstanceList = await Product.find();
+    var productInstanceList;
+    const categoryInstance = await Category.findById(req.query.category).populate("products");
+
+    if(categoryInstance){
+        productInstanceList = categoryInstance.products; 
+    }else{
+        productInstanceList = await Product.find();
+    }
+    
     res.json(productInstanceList);
 }
 
@@ -14,10 +22,12 @@ productCtrl.getInstance = async (req, res) => {
 }
 
 productCtrl.createInstance = async (req, res) => {
-    
     const categoryInstance = await Category.findById(req.body.categoryId);
     const productInstance = new Product(req.body);
-    await productInstance.save();
+    await productInstance.save(function(err) {
+        if (err) return res.json(err);
+    });
+
     
     await categoryInstance.products.push(productInstance);
     await categoryInstance.save();

@@ -10,7 +10,7 @@ export class CategoryService {
   selectedCategory: Category;
   categoriesList : Category[];
 
-  readonly URL_API = 'http://localhost:3000/api/categories/';
+  readonly URL_API = 'http://localhost:3000/api/categories';
 
   constructor(private http: HttpClient) { 
     this.selectedCategory = new Category();
@@ -25,10 +25,10 @@ export class CategoryService {
   }
 
   updateInstance(instance : Category){
-    return this.http.put(this.URL_API + `${instance._id}`, instance);
+    return this.http.put(this.URL_API + '/'+`${instance._id}`, instance);
   }
 
   deleteInstance(_id : string){
-    return this.http.delete(this.URL_API+ _id);
+    return this.http.delete(this.URL_API+'/'+_id);
   }
 }

@@ -10,14 +10,14 @@ export class ProductService {
   selectedProduct: Product;
   productsList : Product[];
 
-  readonly URL_API = 'http://localhost:3000/api/products/';
+  readonly URL_API = 'http://localhost:3000/api/products';
 
   constructor(private http: HttpClient) { 
     this.selectedProduct = new Product();
   };
 
-  getList(){
-    return this.http.get(this.URL_API);
+  getList(categoryId : string){
+    return this.http.get(this.URL_API+'?category='+categoryId);
   }
 
   createInstance(instance : Product){
@@ -25,10 +25,10 @@ export class ProductService {
   }
 
   updateInstance(instance : Product){
-    return this.http.put(this.URL_API + `${instance._id}`, instance);
+    return this.http.put(this.URL_API+'/'+`${instance._id}`, instance);
   }
 
   deleteInstance(_id : string){
-    return this.http.delete(this.URL_API+ _id);
+    return this.http.delete(this.URL_API+'/'+ _id);
   }
 }
