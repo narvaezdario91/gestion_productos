@@ -12,6 +12,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //Routes
+app.use('/api/products',require('./routes/Product.route'))
+app.use('/api/categories',require('./routes/Category.route'))
 
 //Starting Server
 app.listen(app.get('port'), ()=>{
