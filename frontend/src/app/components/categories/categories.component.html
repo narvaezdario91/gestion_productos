@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-contet">
+                    <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="name" #name="ngModel" [(ngModel)]="categoryService.selectedCategory.name"
+                                placeholder="Ingrese el Nombre">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="description" #name="ngModel" [(ngModel)]="categoryService.selectedCategory.description"
+                                placeholder="Ingrese la descripción">
+                            </div>
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right">Guardar</button>
+                                    <button class="btn left" (click)="resetForm(categoryForm)">Limpiar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categoryService.categoriesList">
+                        <th>{{category.name}}</th>
+                        <th>{{category.description}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
