@@ -21,7 +21,7 @@ categorytCtrl.createInstance = async (req, res) => {
 }
 
 categorytCtrl.editInstance = async (req, res) => {
-    await categoryInstance.findByIdAndUpdate(req.params.id, {$set: req.body});
+    await Category.findByIdAndUpdate(req.params.id, {$set: req.body});
     res.json({
         'status': 'Categoria guardada'
     });

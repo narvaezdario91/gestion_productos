@@ -25,10 +25,11 @@ export class CategoryService {
   }
 
   updateInstance(instance : Category){
-    return this.http.put(this.URL_API + '${instance._id}', instance);
+    console.log(instance);
+    return this.http.put(this.URL_API + `${instance._id}`, instance);
   }
 
   deleteInstance(_id : string){
-    return this.http.delete(this.URL_API+ '${instance._id}');
+    return this.http.delete(this.URL_API+ _id);
   }
 }

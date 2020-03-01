@@ -21,14 +21,24 @@ export class CategoriesComponent implements OnInit {
   }
 
   addCategory(form: NgForm){
-    console.log(form.value);
-    this.categoryService.createInstance(form.value)
+
+    if(form.value._id){
+      this.categoryService.updateInstance(form.value)
+        .subscribe(res =>{
+          console.log(res);
+          this.resetForm(form);
+          M.toast({html: 'Categoria modificada'});
+          this.getCategories();
+        });
+    }else{
+      this.categoryService.createInstance(form.value)
       .subscribe(res => {
         console.log(res);
         this.resetForm(form);
         M.toast({html: 'Categoria creada'});
         this.getCategories();
-      })
+      });
+    }
       
   }
 
@@ -45,6 +55,18 @@ export class CategoriesComponent implements OnInit {
       form.reset();
       this.categoryService.selectedCategory = new Category();
     }
-      
+  }
+
+  editCategory(category: Category){
+    this.categoryService.selectedCategory = category;
+  }
+
+  deleteCategory(category: Category){
+    this.categoryService.deleteInstance(category._id)
+      .subscribe(res => {
+        M.toast({html: 'Categoria eliminada'});
+        this.getCategories();
+      });
+
   }
 }
