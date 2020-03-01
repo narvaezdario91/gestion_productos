@@ -25,7 +25,6 @@ export class CategoryService {
   }
 
   updateInstance(instance : Category){
-    console.log(instance);
     return this.http.put(this.URL_API + `${instance._id}`, instance);
   }
 
