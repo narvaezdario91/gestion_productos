@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const Category = require('../models/Category');
 
 const productCtrl ={};
 
@@ -13,11 +14,18 @@ productCtrl.getInstance = async (req, res) => {
 }
 
 productCtrl.createInstance = async (req, res) => {
+    
+    const categoryInstance = await Category.findById(req.body.categoryId);
     const productInstance = new Product(req.body);
     await productInstance.save();
+    
+    await categoryInstance.products.push(productInstance);
+    await categoryInstance.save();
+
     res.json({
         'status': 'Producto guardado'
     });
+
 }
 
 productCtrl.editInstance = async (req, res) => {
