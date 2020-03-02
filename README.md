@@ -8,9 +8,9 @@ git clone https://narvaezdario91@bitbucket.org/narvaezdario91/gestion_productos.
 
 ### Pre-requisitos 📋
 
-NPM > 6.14.1
-Node.js > 12.16.1
-Angular CLI > 9.0.4
+* NPM > 6.14.1
+* Node.js > 12.16.1
+* Angular CLI > 9.0.4
 
 ## Despliegue 📦
 
