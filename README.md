@@ -4,7 +4,13 @@ Sistema para la gestión de productos. Solicitado por la empresa APPSUS como pru
 
 ## Comenzando 🚀
 
+```
 git clone https://narvaezdario91@bitbucket.org/narvaezdario91/gestion_productos.git
+```
+
+```
+git clone https://github.com/narvaezdario91/gestion_productos.git
+```
 
 ### Pre-requisitos 📋
 
