@@ -24,10 +24,7 @@ productCtrl.getInstance = async (req, res) => {
 productCtrl.createInstance = async (req, res) => {
     const categoryInstance = await Category.findById(req.body.categoryId);
     const productInstance = new Product(req.body);
-    await productInstance.save(function(err) {
-        if (err) return res.json(err);
-    });
-
+    await productInstance.save();
     
     await categoryInstance.products.push(productInstance);
     await categoryInstance.save();

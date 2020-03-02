@@ -1,9 +1,19 @@
 const Category = require('../models/Category');
+const User = require('../models/User');
 
 const categorytCtrl ={};
 
 categorytCtrl.getList = async (req, res) => {
-    const categoryInstanceList = await Category.find().populate("products");
+
+    var categoryInstanceList;
+    const userInstance  = await User.findById(req.query.user).populate("categories");
+
+    if(userInstance){
+        categoryInstanceList = userInstance.categories;
+    }else{
+        categoryInstanceList = await Category.find().populate("products");
+    }
+
     res.json(categoryInstanceList);
 }
 
@@ -13,8 +23,13 @@ categorytCtrl.getInstance = async (req, res) => {
 }
 
 categorytCtrl.createInstance = async (req, res) => {
+    const userInstance = await User.findById(req.body.userId);
     const categoryInstance = new Category(req.body);
     await categoryInstance.save();
+
+    await userInstance.categories.push(categoryInstance);
+    await userInstance.save();
+
     res.json({
         'status': 'Categoria guardada'
     });

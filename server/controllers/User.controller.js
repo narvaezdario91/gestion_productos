@@ -34,4 +34,16 @@ userCtrl.deleteInstance = async (req, res) => {
     });
 }
 
+userCtrl.login = async (req, res) => {
+
+    var userInstance = await User.findOne({'email': req.body.email});
+    if(!userInstance){
+        userInstance = new User(req.body);
+        userInstance = await userInstance.save();
+    }
+    
+    res.json(userInstance);
+    
+}
+
 module.exports = userCtrl;

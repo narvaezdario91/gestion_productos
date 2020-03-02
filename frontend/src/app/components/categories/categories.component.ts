@@ -4,6 +4,7 @@ import { CategoryService } from '../../services/category.service';
 import { NgForm } from '@angular/forms';
 import { Category } from 'src/app/models/category';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 declare var M:any;
 
@@ -15,14 +16,17 @@ declare var M:any;
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor( public categoryService : CategoryService, private router: Router ) { }
+  private userId: string;
+
+  constructor( public categoryService : CategoryService, private router: Router, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get("userId");
     this.getCategories();
   }
 
   addCategory(form: NgForm){
-
+    form.value.userId = this.userId;
     if(form.value._id){
       this.categoryService.updateInstance(form.value)
         .subscribe(res =>{
@@ -31,6 +35,7 @@ export class CategoriesComponent implements OnInit {
           this.getCategories();
         });
     }else{
+      form.value._id = undefined;
       this.categoryService.createInstance(form.value)
       .subscribe(res => {
         this.resetForm(form);
@@ -42,7 +47,8 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategories(){
-    this.categoryService.getList()
+    console.log(this.userId);
+    this.categoryService.getList(this.userId)
       .subscribe(res => {
         this.categoryService.categoriesList = res as Category[];
       });
@@ -66,5 +72,9 @@ export class CategoriesComponent implements OnInit {
         this.getCategories();
       });
 
+  }
+
+  addProducts(category: Category){
+    this.router.navigate(['/categories/'+category._id]);
   }
 }

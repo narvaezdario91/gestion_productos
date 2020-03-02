@@ -16,8 +16,8 @@ export class CategoryService {
     this.selectedCategory = new Category();
   };
 
-  getList(){
-    return this.http.get(this.URL_API);
+  getList(userId : string){
+    return this.http.get(this.URL_API+'?user='+userId);
   }
 
   createInstance(instance : Category){

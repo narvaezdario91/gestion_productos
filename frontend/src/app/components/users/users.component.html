@@ -3,11 +3,11 @@
         <div class="col s6 offset-s3">
             <div class="card">
                 <div class="card-content">
-                    <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+                    <span class="card-title">Inicio de Sesión</span>
+                    <form #userForm="ngForm" (ngSubmit)="login(userForm)">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="email" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email"
-                                placeholder="Ingrese su email">
+                                <input name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Ingrese su email">
                             </div>
                             <div class="card-action">
                                 <div class="input-field col s12">

@@ -8,5 +8,6 @@ router.get('/:id', userCtrl.getInstance);
 router.post('', userCtrl.createInstance);
 router.put('/:id', userCtrl.editInstance);
 router.delete('/:id', userCtrl.deleteInstance);
+router.post('/login', userCtrl.login);
 
 module.exports = router;

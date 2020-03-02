@@ -67,4 +67,14 @@ export class UsersComponent implements OnInit {
       });
 
   }
+
+  login(form: NgForm){
+    console.log(form.value);
+    this.userService.login(form.value)
+      .subscribe(res => {
+        this.userService.selectedUser = res as User;
+        M.toast({html: 'Usuario Logeado'});
+        this.router.navigate(['/users/'+this.userService.selectedUser._id]);
+      });
+  }
 }

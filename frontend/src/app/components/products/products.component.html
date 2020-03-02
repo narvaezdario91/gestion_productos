@@ -3,6 +3,7 @@
         <div class="col s5">
             <div class="card">
                 <div class="card-content">
+                    <span class="card-title">PRODUCTOS</span>
                     <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
                         <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="productService.selectedProduct._id">
                         <div class="row">

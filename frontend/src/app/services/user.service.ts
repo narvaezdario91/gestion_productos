@@ -30,4 +30,8 @@ export class UserService {
   deleteInstance(_id : string){
     return this.http.delete(this.URL_API+'/'+_id);
   }
+
+  login(instance :  User){
+    return this.http.post(this.URL_API+'/login', instance)
+  }
 }
