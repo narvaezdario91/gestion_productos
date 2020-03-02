@@ -26,6 +26,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   addCategory(form: NgForm){
+
     form.value.userId = this.userId;
     if(form.value._id){
       this.categoryService.updateInstance(form.value)

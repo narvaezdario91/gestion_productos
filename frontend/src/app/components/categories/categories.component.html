@@ -2,7 +2,7 @@
 </i></a>
 <div class="container">
     <div class="row">
-        <div class="col s5">
+        <div class="col s4">
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">CATEGORÍAS</span>
@@ -10,16 +10,18 @@
                         <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="categoryService.selectedCategory._id">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="text" name="name" #name="ngModel" [(ngModel)]="categoryService.selectedCategory.name"
-                                placeholder="Ingrese el Nombre">
+                                <input required  type="text" name="name" #name="ngModel" [(ngModel)]="categoryService.selectedCategory.name"
+                                placeholder=""> 
+                                <label for="name">Nombre</label>                               
                             </div>
                             <div class="input-field col s12">
                                 <input type="text" name="description" #description="ngModel" [(ngModel)]="categoryService.selectedCategory.description"
-                                placeholder="Ingrese la descripción">
+                                placeholder="">
+                                <label for="description">Descripción</label>
                             </div>
                             <div class="card-action">
                                 <div class="input-field col s12">
-                                    <button class="btn right">Guardar</button>
+                                    <button class="btn right" [disabled]="categoryForm.invalid">Guardar</button>
                                     <button class="btn left" (click)="resetForm(categoryForm)">Limpiar</button>
                                 </div>
                             </div>
@@ -28,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col s7">
+        <div class="col s8">
             <table>
                 <thead>
                     <th>Nombre</th>

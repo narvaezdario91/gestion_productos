@@ -7,11 +7,12 @@
                     <form #userForm="ngForm" (ngSubmit)="login(userForm)">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Ingrese su email">
+                                <input type="email" name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                <label for="email">Email</label>
                             </div>
                             <div class="card-action">
                                 <div class="input-field col s12">
-                                    <button class="btn right">Ingresar</button>
+                                    <button class="btn right" [disabled]="userForm.invalid">Ingresar</button>
                                 </div>
                             </div>
                         </div>
