@@ -67,8 +67,4 @@ export class CategoriesComponent implements OnInit {
       });
 
   }
-
-  addProducts(category: Category){
-    this.router.navigate(['./products']);
-  }
 }
