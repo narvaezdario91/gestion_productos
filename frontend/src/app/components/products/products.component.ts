@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 declare var M:any;
 
@@ -17,7 +18,7 @@ export class ProductsComponent implements OnInit {
 
   private categoryId: string;
 
-  constructor( public productService : ProductService, private route: ActivatedRoute) { }
+  constructor( public productService : ProductService, private route: ActivatedRoute, private _location: Location) { }
 
   ngOnInit(): void {
     this.categoryId = this.route.snapshot.paramMap.get("categoryId");
@@ -70,6 +71,10 @@ export class ProductsComponent implements OnInit {
         this.getProducts();
       });
 
+  }
+
+  goBack() {
+    this._location.back();
   }
 
 }

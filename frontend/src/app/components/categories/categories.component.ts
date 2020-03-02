@@ -77,4 +77,8 @@ export class CategoriesComponent implements OnInit {
   addProducts(category: Category){
     this.router.navigate(['/categories/'+category._id]);
   }
+
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }
