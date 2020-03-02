@@ -14,11 +14,35 @@ git clone https://narvaezdario91@bitbucket.org/narvaezdario91/gestion_productos.
 
 ## Despliegue 📦
 
-* Mediante la consola de windows ir a la carpeta del proyecto: cmd DIR_PROJECT
-* Estando en la carpeta del proyecto ejecutar el siguiente comando: npm run dev
-* Acceder a la carpeta frontend que esta contenida en la carpeta del proyecto: cmd DIR_PROJECT/frontend
-* Ejecutar el siguiente comando: ng serve
-* Ingresar mediante un navegador a la dirección: http://localhost:4200/
+* Mediante la consola de windows ir a la carpeta donde el proyecto fue clonado: 
+
+```
+cmd DIR_PROJECT
+```
+
+* Estando en la carpeta del proyecto ejecutar el siguiente comando: 
+
+```
+npm run dev
+```
+
+* Acceder a la carpeta frontend que esta contenida en la carpeta del proyecto: 
+
+```
+cmd DIR_PROJECT/frontend
+```
+
+* Ejecutar el siguiente comando: 
+
+```
+ng serve
+```
+
+* Ingresar mediante un navegador a la dirección:
+
+```
+http://localhost:4200/
+```
 
 ## Autores ✒️
 
